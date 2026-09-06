@@ -1,0 +1,44 @@
+# Extra floating lines above/below each player's normal nametag.
+enabled: true
+settings:
+  # Refreshes placeholder text only; movement is passenger-synced with the player.
+  update-interval-ticks: 5
+  view-range: 32.0
+  # Hide a player's own floating lines from that player while everyone else can see them.
+  hide-own-lines: true
+  # Fine-tune all mounted lines up/down without affecting their instant movement sync.
+  base-height: 0.90
+  passenger-anchor-offset: 0.0
+  distance-between-lines: 0.28
+  # Always show the player name in the center of the floating line stack.
+  show-player-name: true
+  player-name-format: "&f%player_name%"
+
+java:
+  enabled: true
+  above:
+    line-2:
+      enabled: true
+      text: "&6Level &f%player_level%"
+    line-1:
+      enabled: true
+      text: "%asupertab_tags%"
+  below:
+    line-1:
+      enabled: true
+      text: "&c❤ &f%asupertab_health%"
+    line-2:
+      enabled: true
+      text: "&a%asupertab_ping%ms"
+
+bedrock:
+  # Kept off by default because Bedrock/Geyser rendering behavior can differ.
+  enabled: false
+  above:
+    line-1:
+      enabled: true
+      text: "%asupertab_tags%"
+  below:
+    line-1:
+      enabled: true
+      text: "&c❤ &f%asupertab_health%"

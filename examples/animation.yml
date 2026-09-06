@@ -1,0 +1,56 @@
+# ASuperTAB reusable text animations.
+# Use any animation anywhere ASuperTAB parses placeholders with:
+#   %asupertab_animation_<animation-id>%
+#
+# Supported types: FRAMES, RAINBOW, GRADIENT, TYPEWRITER, PULSE
+# Full legacy (&a), HEX (&#RRGGBB / #RRGGBB / <#RRGGBB>) and gradients are supported.
+
+animations:
+  rainbow-title:
+    enabled: true
+    type: RAINBOW
+    text: "ASuperTAB"
+    interval-ticks: 2
+    colors:
+      - "#FF0000"
+      - "#FFFF00"
+      - "#00FF00"
+      - "#00FFFF"
+      - "#5555FF"
+      - "#AA00FF"
+
+  server-gradient:
+    enabled: true
+    type: GRADIENT
+    text: "YourServer"
+    interval-ticks: 3
+    colors:
+      - "#00FFFF"
+      - "#AA55FF"
+      - "#FF55AA"
+
+  welcome-typewriter:
+    enabled: true
+    type: TYPEWRITER
+    text: "Welcome to the server!"
+    interval-ticks: 2
+    pause-ticks: 30
+
+  pulse:
+    enabled: true
+    type: PULSE
+    text: "PLAY NOW"
+    interval-ticks: 5
+    colors:
+      - "#FFFFFF"
+      - "#55FFFF"
+      - "#AA55FF"
+
+  custom-frames:
+    enabled: true
+    type: FRAMES
+    interval-ticks: 10
+    frames:
+      - "&fWelcome!"
+      - "&#55FFFFHave fun!"
+      - "<gradient:#55FFFF:#AA55FF>ASuperTAB</gradient>"

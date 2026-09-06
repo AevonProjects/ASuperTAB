@@ -1,0 +1,49 @@
+# Optional ASuperTAB Tags module
+enabled: true
+settings:
+  allow-no-tag: true
+  only-one-active-tag: true
+
+gui:
+  title: "&8ASuperTAB Tags"
+  rows: 6
+
+ASuperTABtags:
+  hunter:
+    name: "Hunter"
+    tagshow: "&c[Hunter]"
+    requirements:
+      - "%statistic_player_kills% >= 3"
+    gui:
+      material: IRON_SWORD
+      slot: 10
+      name: "&cHunter"
+      lore:
+        - "&7Requirement:"
+        - "&fKill at least 3 players"
+
+  rich:
+    name: "Rich"
+    tagshow: "&6[Rich]"
+    requirements:
+      - "%vault_eco_balance% >= 1000000"
+    gui:
+      material: GOLD_INGOT
+      slot: 11
+      name: "&6Rich"
+      lore:
+        - "&7Requirement:"
+        - "&fHave at least $1,000,000"
+
+  veteran:
+    name: "Veteran"
+    tagshow: "&b[Veteran]"
+    requirements:
+      - "%statistic_hours_played% >= 100"
+    gui:
+      material: CLOCK
+      slot: 12
+      name: "&bVeteran"
+      lore:
+        - "&7Requirement:"
+        - "&fReach 100 hours of playtime"

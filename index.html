@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ASuperTAB v1.0.0 Wiki</title>
+<meta name="description" content="Official ASuperTAB v1.0.0 documentation by Klioh_. TAB, scoreboards, LuckPerms sorting, RGB animations, tags and more.">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><div class="brand-mark">A</div><span>ASuperTAB <small>Official Wiki</small></span></div>
+  <div class="top-actions">
+    <button class="btn mobile-menu" id="menuBtn">☰ Menu</button>
+    <a class="btn desktop" href="https://discord.gg/Wcxw9VW85t" target="_blank" rel="noopener">Discord</a>
+    <a class="btn primary" href="https://aevonplugins.shop" target="_blank" rel="noopener">Aevon Plugins</a>
+  </div>
+</header>
+<div class="layout">
+<aside class="sidebar">
+  <div class="search"><input id="docSearch" placeholder="Search the wiki..." aria-label="Search wiki"></div>
+  <nav class="nav">
+    <div class="nav-group">Getting Started</div>
+    <a href="#overview">Overview</a><a href="#installation">Installation</a><a href="#dependencies">Dependencies & Integrations</a><a href="#commands">Commands & Permissions</a>
+    <div class="nav-group">Configuration</div>
+    <a href="#files">YAML Files Summary</a><a href="#config">config.yml</a><a href="#scoreboard">scoreboard.yml</a><a href="#groups">grouptab.yml</a><a href="#tags">astags.yml</a><a href="#animations">animation.yml</a><a href="#userlines">userlines.yml</a><a href="#messages">messages.yml</a>
+    <div class="nav-group">Reference</div>
+    <a href="#placeholders">Placeholders</a><a href="#examples">Setup Examples</a><a href="#faq">FAQ</a><a href="#support">Support</a>
+  </nav>
+</aside>
+<main class="main">
+<section class="hero">
+  <div class="eyebrow">ASuperTAB • v1.0.0</div>
+  <h1>One plugin for a <span>cleaner server UI.</span></h1>
+  <p>ASuperTAB combines TAB formatting, LuckPerms-based sorting, Java and Bedrock sidebars, RGB/HEX text, reusable animations, custom tags, floating user lines, ping information and PlaceholderAPI support in one configurable plugin.</p>
+  <div class="hero-links"><a class="btn primary" href="#installation">Start Setup</a><a class="btn yellow" href="#files">Configuration Guide</a><a class="btn" href="https://discord.gg/Wcxw9VW85t" target="_blank" rel="noopener">Get Support</a></div>
+  <div class="meta-grid"><div class="meta-card"><b>Author</b><span>Klioh_</span></div><div class="meta-card"><b>Version</b><span>1.0.0</span></div><div class="meta-card"><b>API</b><span>Minecraft 1.21+</span></div><div class="meta-card"><b>Hard Dependency</b><span>ACore</span></div></div>
+</section>
+<div class="no-results">No wiki sections match your search.</div>
+
+<section class="section" id="overview"><h2>Plugin Overview</h2>
+<p><strong>ASuperTAB</strong> is a server-interface plugin built to centralize the parts players see constantly: the TAB list, sidebar scoreboard, player rank formatting, custom tags, ping displays, animated text, and floating information above/below players.</p>
+<div class="grid-2">
+<div class="feature"><b>TAB List</b><p>Custom names, header/footer, native ping and configurable refresh.</p></div>
+<div class="feature"><b>Automatic Sorting</b><p>LuckPerms weight sorting without forcing your visual TAB format.</p></div>
+<div class="feature"><b>Scoreboards</b><p>Separate Java and Bedrock layouts with optional hidden score numbers.</p></div>
+<div class="feature"><b>RGB & Animations</b><p>Legacy colors, HEX colors, gradients, rainbow, pulse, typewriter and frame animations.</p></div>
+<div class="feature"><b>Custom Tags</b><p>Unlockable/selectable tags with requirement checks and a GUI.</p></div>
+<div class="feature"><b>User Lines</b><p>Extra placeholder-driven floating text above and below players.</p></div>
+</div>
+<div class="callout"><strong>Design principle:</strong> sorting and appearance are separate. Enabling automatic LuckPerms sorting does not require you to use <span class="inline-code">grouptab.yml</span> formatting.</div>
+</section>
+
+<section class="section" id="installation"><h2>Installation</h2>
+<ol><li>Stop the server completely.</li><li>Install <strong>ACore</strong> in the <span class="inline-code">plugins</span> folder.</li><li>Place <strong>ASuperTAB-v1.0.0.jar</strong> in the same folder.</li><li>Install any optional integrations you want, such as PlaceholderAPI and LuckPerms.</li><li>Start the server once so ASuperTAB can create its YAML files.</li><li>Edit the generated files inside <span class="inline-code">plugins/ASuperTAB/</span>.</li><li>For normal config edits use <span class="inline-code">/asupertab reload</span>. For JAR/dependency changes, do a full restart.</li></ol>
+<pre>plugins/
+├── ACore.jar
+├── ASuperTAB-v1.0.0.jar
+├── PlaceholderAPI.jar      # optional
+└── LuckPerms.jar           # optional</pre>
+</section>
+
+<section class="section" id="dependencies"><h2>Dependencies & Supported Integrations</h2>
+<h3>Required: ACore</h3><p>ACore is a <strong>hard dependency</strong>. Bukkit/Paper loads ACore before ASuperTAB. If ACore is missing or fails to enable, ASuperTAB will not start.</p>
+<h3>Optional integrations</h3>
+<div class="table-wrap"><table><thead><tr><th>Plugin</th><th>How ASuperTAB uses it</th></tr></thead><tbody>
+<tr><td>PlaceholderAPI</td><td>Resolves external placeholders inside supported ASuperTAB text.</td></tr>
+<tr><td>LuckPerms</td><td>Group prefixes, primary groups and automatic weight-based TAB sorting.</td></tr>
+<tr><td>Vault</td><td>Allows economy placeholders provided through compatible Vault/PlaceholderAPI expansions.</td></tr>
+<tr><td>Essentials / EssentialsX</td><td>Declared optional integration for compatible server setups.</td></tr>
+<tr><td>CMI</td><td>Declared optional integration for compatible server setups.</td></tr>
+<tr><td>Floodgate</td><td>Optional Bedrock platform detection support.</td></tr>
+<tr><td>Geyser-Spigot</td><td>Optional Bedrock-client support for separate layouts.</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="section" id="commands"><h2>Commands & Permissions</h2>
+<div class="table-wrap"><table><thead><tr><th>Command</th><th>Function</th><th>Permission</th></tr></thead><tbody>
+<tr><td><code>/asupertab reload</code></td><td>Reloads all ASuperTAB configuration files.</td><td><code>asupertab.admin</code> (OP)</td></tr>
+<tr><td><code>/asupertabreload</code></td><td>Alias that reloads all ASuperTAB files.</td><td><code>asupertab.admin</code> (OP)</td></tr>
+<tr><td><code>/asupertabversion</code></td><td>Shows ASuperTAB v1.0.0 and author information.</td><td>None</td></tr>
+<tr><td><code>/astags</code></td><td>Opens the ASuperTAB Tags GUI.</td><td><code>asupertab.tags.use</code> (default: everyone)</td></tr>
+<tr><td><code>/astags clear</code></td><td>Clears the player's selected ASuperTAB tag.</td><td><code>asupertab.tags.use</code></td></tr>
+<tr><td><code>/asbtoggle</code></td><td>Turns only that player's ASuperTAB sidebar scoreboard off/on for the current session.</td><td>None</td></tr>
+</tbody></table></div>
+<div class="callout warn"><strong>/asbtoggle is session-only.</strong> It does not permanently save the preference. Reconnecting/restarting returns the player to the server's normal scoreboard state.</div>
+</section>
+
+<section class="section" id="files"><h2>YAML Files — Simple Summary</h2><p>If you only remember one part of this wiki, remember this:</p>
+<div class="grid-2">
+<div class="file-card"><div class="purpose">Main settings</div><h3>config.yml</h3><p>TAB system, refresh speed, placeholder fallback, player-name format, ping, auto-sort, header/footer, RGB and animations toggle.</p></div>
+<div class="file-card"><div class="purpose">Sidebar</div><h3>scoreboard.yml</h3><p>Java/Bedrock scoreboard title and lines, plus the option that hides right-side score numbers.</p></div>
+<div class="file-card"><div class="purpose">Ranks</div><h3>grouptab.yml</h3><p>LuckPerms group-specific TAB and nametag prefixes/names/suffixes.</p></div>
+<div class="file-card"><div class="purpose">Player tags</div><h3>astags.yml</h3><p>Tag GUI, visible tag text, unlock requirements, item icons and slots.</p></div>
+<div class="file-card"><div class="purpose">Animated text</div><h3>animation.yml</h3><p>Reusable FRAMES, RAINBOW, GRADIENT, TYPEWRITER and PULSE animations.</p></div>
+<div class="file-card"><div class="purpose">Floating info</div><h3>userlines.yml</h3><p>Extra text above/below players, viewing distance, spacing, platform-specific lines.</p></div>
+<div class="file-card"><div class="purpose">Language</div><h3>messages.yml</h3><p>Permission, reload and custom-tag messages shown to players.</p></div>
+</div>
+<p>Exact default examples are also included in this repository under <span class="inline-code">/examples</span>.</p>
+</section>
+
+<section class="section" id="config"><h2>config.yml</h2><p>This is ASuperTAB's main control file.</p>
+<h3>Refresh rate</h3><pre>updates:
+  tab-refresh-ticks: 20</pre><p>20 ticks is approximately one second on a server running at 20 TPS. Lower values refresh more often; higher values refresh less often.</p>
+<h3>Unresolved placeholders</h3><pre>placeholders:
+  unresolved-mode: KEEP</pre><p><strong>KEEP</strong> leaves the placeholder visible, <strong>EMPTY</strong> hides it, and <strong>UNKNOWN</strong> replaces it with <code>?</code>.</p>
+<h3>TAB name format</h3><pre>tablist:
+  enabled: true
+  name:
+    use-group-format: false
+    format: "%player_name%"</pre><p>Set <code>use-group-format: false</code> when you want one universal format, such as:</p><pre>format: "%luckperms_prefix%%player_name% &7%asupertab_tags%"</pre><p>Set it to <code>true</code> when you want prefixes/names/suffixes to come from each LuckPerms group in <code>grouptab.yml</code>.</p>
+<h3>Native TAB ping</h3><pre>tablist:
+  ping:
+    enabled: true</pre>
+<h3>Automatic LuckPerms sorting</h3><pre>tablist:
+  auto-sort:
+    enabled: true
+    higher-weight-first: true
+    same-weight-sort: ALPHABETICAL</pre><p>When enabled, ASuperTAB sorts players by LuckPerms weight. Players with equal weight are sorted alphabetically. This sorting is independent from visual group formatting.</p>
+<h3>Java header & footer</h3><pre>tablist:
+  java:
+    header:
+      - "&6&lASuperTAB"
+      - "&7Welcome, &f%player_name%"
+      - "&7Online: &a%server_online%"
+      - ""
+    footer:
+      - ""
+      - "&7Rank: &f%luckperms_primary_group%"
+      - "&7Ping: %asupertab_ping_colored%&7ms"</pre>
+<h3>Ping colors</h3><pre>ping:
+  enabled: true
+  ranges:
+    green-max: 99
+    yellow-max: 150
+    gold-max: 250
+  colors:
+    green: "&a"
+    yellow: "&e"
+    gold: "&6"
+    red: "&c"</pre>
+<h3>RGB, gradients & animation engine</h3><pre>formatting:
+  rgb-enabled: true
+  gradients-enabled: true
+
+animations:
+  enabled: true</pre>
+</section>
+
+<section class="section" id="scoreboard"><h2>scoreboard.yml</h2><p>Controls the right-side sidebar independently for Java and Bedrock.</p>
+<h3>Hide the red score numbers</h3><pre>settings:
+  hide-score-numbers: true</pre><p>Keep this <code>true</code> to hide Minecraft's score values on the far-right side of each line.</p>
+<h3>Java scoreboard</h3><pre>scoreboard:
+  java:
+    enabled: true
+    title: "&6&lASuperTAB"
+    lines:
+      - "&7Welcome"
+      - "&f%player_name%"
+      - ""
+      - "&fRank: %luckperms_prefix%"
+      - "&fTag: %asupertab_tags%"
+      - "&fBalance: &a$%vault_eco_balance_formatted%"
+      - "&fPing: &a%asupertab_ping%ms"
+      - ""
+      - "&eYourServer.com"</pre>
+<h3>Bedrock scoreboard</h3><pre>  bedrock:
+    enabled: true
+    title: "&6ASuperTAB"
+    lines:
+      - "&f%player_name%"
+      - "&fRank: %luckperms_primary_group%"
+      - "&fTag: %asupertab_tags%"
+      - "&fMoney: &a$%vault_eco_balance%"
+      - "&fOnline: &a%server_online%"</pre>
+<div class="callout"><strong>Per-player toggle:</strong> a player can run <code>/asbtoggle</code> to hide/show only their own sidebar without disabling TAB, tags, sorting or animations.</div>
+</section>
+
+<section class="section" id="groups"><h2>grouptab.yml</h2><p>Use this file when you want different TAB/nametag designs for different LuckPerms groups.</p>
+<pre>groups:
+  admin:
+    priority: 10
+    tab:
+      prefix: "&c&lADMIN &c"
+      name: "%player_name%"
+      suffix: " %asupertab_tags%"
+    nametag:
+      prefix: "&c&lADMIN &c"
+      name: "%player_name%"
+      suffix: ""</pre>
+<p>The group key (for example <code>admin</code>) should match the LuckPerms group name. Add as many groups as needed.</p>
+<div class="callout warn">To actually use these group-specific TAB designs, set <code>tablist.name.use-group-format: true</code> in <code>config.yml</code>. Leave it <code>false</code> if you prefer a single PlaceholderAPI/LuckPerms-based format.</div>
+</section>
+
+<section class="section" id="tags"><h2>astags.yml</h2><p>The optional Tags module lets players unlock and select custom tags through <code>/astags</code>.</p>
+<pre>enabled: true
+settings:
+  allow-no-tag: true
+  only-one-active-tag: true
+
+gui:
+  title: "&8ASuperTAB Tags"
+  rows: 6</pre>
+<h3>Create a tag</h3><pre>ASuperTABtags:
+  hunter:
+    name: "Hunter"
+    tagshow: "&c[Hunter]"
+    requirements:
+      - "%statistic_player_kills% >= 3"
+    gui:
+      material: IRON_SWORD
+      slot: 10
+      name: "&cHunter"
+      lore:
+        - "&7Requirement:"
+        - "&fKill at least 3 players"</pre>
+<p><code>hunter</code> is the internal ID. <code>tagshow</code> is the text displayed by <code>%asupertab_tags%</code>. Requirements are evaluated from placeholder values, so PlaceholderAPI and the appropriate expansions/plugins must provide those placeholders.</p>
+<h3>More requirement examples</h3><pre># Economy
+- "%vault_eco_balance% >= 1000000"
+
+# Playtime
+- "%statistic_hours_played% >= 100"</pre>
+</section>
+
+<section class="section" id="animations"><h2>animation.yml</h2><p>Create reusable animated values and place them anywhere ASuperTAB parses placeholders with:</p><pre>%asupertab_animation_&lt;animation-id&gt;%</pre>
+<p>Supported types: <strong>FRAMES, RAINBOW, GRADIENT, TYPEWRITER, PULSE</strong>.</p>
+<h3>RAINBOW</h3><pre>animations:
+  rainbow-title:
+    enabled: true
+    type: RAINBOW
+    text: "ASuperTAB"
+    interval-ticks: 2
+    colors:
+      - "#FF0000"
+      - "#FFFF00"
+      - "#00FF00"
+      - "#00FFFF"
+      - "#5555FF"
+      - "#AA00FF"</pre>
+<h3>GRADIENT</h3><pre>server-gradient:
+  enabled: true
+  type: GRADIENT
+  text: "YourServer"
+  interval-ticks: 3
+  colors:
+    - "#00FFFF"
+    - "#AA55FF"
+    - "#FF55AA"</pre>
+<h3>TYPEWRITER</h3><pre>welcome-typewriter:
+  enabled: true
+  type: TYPEWRITER
+  text: "Welcome to the server!"
+  interval-ticks: 2
+  pause-ticks: 30</pre>
+<h3>PULSE</h3><pre>pulse:
+  enabled: true
+  type: PULSE
+  text: "PLAY NOW"
+  interval-ticks: 5
+  colors:
+    - "#FFFFFF"
+    - "#55FFFF"
+    - "#AA55FF"</pre>
+<h3>FRAMES</h3><pre>custom-frames:
+  enabled: true
+  type: FRAMES
+  interval-ticks: 10
+  frames:
+    - "&fWelcome!"
+    - "&#55FFFFHave fun!"
+    - "&lt;gradient:#55FFFF:#AA55FF&gt;ASuperTAB&lt;/gradient&gt;"</pre>
+</section>
+
+<section class="section" id="userlines"><h2>userlines.yml</h2><p>Controls extra floating information above and below each player's normal name.</p>
+<pre>enabled: true
+settings:
+  update-interval-ticks: 5
+  view-range: 32.0
+  hide-own-lines: true
+  base-height: 0.90
+  passenger-anchor-offset: 0.0
+  distance-between-lines: 0.28
+  show-player-name: true
+  player-name-format: "&f%player_name%"</pre>
+<h3>What the settings mean</h3><div class="table-wrap"><table><thead><tr><th>Setting</th><th>Purpose</th></tr></thead><tbody>
+<tr><td><code>update-interval-ticks</code></td><td>How often placeholder text refreshes.</td></tr><tr><td><code>view-range</code></td><td>Approximate distance at which floating lines are shown.</td></tr><tr><td><code>hide-own-lines</code></td><td>Prevents a player from seeing their own extra lines.</td></tr><tr><td><code>base-height</code></td><td>Moves the full line stack up/down.</td></tr><tr><td><code>distance-between-lines</code></td><td>Vertical spacing between lines.</td></tr><tr><td><code>show-player-name</code></td><td>Shows the player's name in the center of the stack.</td></tr></tbody></table></div>
+<h3>Java lines</h3><pre>java:
+  enabled: true
+  above:
+    line-2:
+      enabled: true
+      text: "&6Level &f%player_level%"
+    line-1:
+      enabled: true
+      text: "%asupertab_tags%"
+  below:
+    line-1:
+      enabled: true
+      text: "&c❤ &f%asupertab_health%"
+    line-2:
+      enabled: true
+      text: "&a%asupertab_ping%ms"</pre>
+<h3>Bedrock lines</h3><p>Bedrock floating lines are disabled by default because Geyser/Bedrock rendering can differ. Test before enabling.</p><pre>bedrock:
+  enabled: false</pre>
+</section>
+
+<section class="section" id="messages"><h2>messages.yml</h2><p>Customize ASuperTAB's player-facing messages.</p><pre>general:
+  no-permission: "&cYou do not have permission to use this command."
+  reloaded: "&aASuperTAB configurations have been reloaded."
+tags:
+  disabled: "&cASuperTAB Tags are currently disabled."
+  locked: "&cYou have not unlocked this tag yet."
+  equipped: "&aYou equipped the tag %tag%&a."
+  cleared: "&aYour active ASuperTAB tag has been cleared."</pre>
+</section>
+
+<section class="section" id="placeholders"><h2>Placeholders & Formatting</h2>
+<h3>Built-in ASuperTAB placeholders</h3><div class="table-wrap"><table><thead><tr><th>Placeholder</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>%asupertab_player%</code></td><td>Player value exposed by ASuperTAB.</td></tr>
+<tr><td><code>%asupertab_displayname%</code></td><td>Player display name.</td></tr>
+<tr><td><code>%asupertab_ping%</code></td><td>Player ping.</td></tr>
+<tr><td><code>%asupertab_health%</code></td><td>Player health.</td></tr>
+<tr><td><code>%asupertab_level%</code></td><td>Player level.</td></tr>
+<tr><td><code>%asupertab_platform%</code></td><td>Platform indicator (Java/Bedrock).</td></tr>
+<tr><td><code>%asupertab_tags%</code></td><td>Currently selected ASuperTAB tag.</td></tr>
+<tr><td><code>%asupertab_animation_&lt;id&gt;%</code></td><td>Reusable animation defined in animation.yml.</td></tr>
+</tbody></table></div>
+<h3>External PlaceholderAPI examples</h3><p>When PlaceholderAPI and the corresponding expansions/plugins are installed, ASuperTAB can parse placeholders such as:</p><pre>%player_name%
+%player_level%
+%server_online%
+%luckperms_prefix%
+%luckperms_primary_group%
+%vault_eco_balance%
+%vault_eco_balance_formatted%
+%statistic_player_kills%
+%statistic_hours_played%</pre>
+<div class="callout warn">External placeholder availability depends on the plugins and PlaceholderAPI expansions installed on your server.</div>
+<h3>Colors</h3><p>ASuperTAB supports legacy Minecraft color codes and RGB/HEX formatting when enabled.</p><pre>&aGreen
+&cRed
+&6Gold
+&#55FFFFAqua HEX
+#55FFFF
+&lt;#55FFFF&gt;
+&lt;gradient:#55FFFF:#AA55FF&gt;Gradient Text&lt;/gradient&gt;</pre>
+</section>
+
+<section class="section" id="examples"><h2>Practical Setup Examples</h2>
+<h3>Simple LuckPerms TAB without group-format mode</h3><pre>tablist:
+  enabled: true
+  name:
+    use-group-format: false
+    format: "%luckperms_prefix%%player_name% &7%asupertab_tags%"
+  ping:
+    enabled: true
+  auto-sort:
+    enabled: true
+    higher-weight-first: true
+    same-weight-sort: ALPHABETICAL</pre>
+<h3>Aqua + yellow survival scoreboard</h3><pre>scoreboard:
+  java:
+    enabled: true
+    title: "&#38E8E2&lYOUR SERVER"
+    lines:
+      - ""
+      - "&fPlayer: &#38E8E2%player_name%"
+      - "&fRank: %luckperms_prefix%"
+      - "&fTag: %asupertab_tags%"
+      - "&fBalance: &e$%vault_eco_balance_formatted%"
+      - "&fPing: &#38E8E2%asupertab_ping%ms"
+      - ""
+      - "&eaevonplugins.shop"</pre>
+<h3>Animated TAB header</h3><pre>tablist:
+  java:
+    header:
+      - "%asupertab_animation_rainbow-title%"
+      - ""
+      - "&#38E8E2Welcome &f%player_name%"
+      - "&fOnline: &e%server_online%"</pre>
+</section>
+
+<section class="section faq" id="faq"><h2>Frequently Asked Questions</h2>
+<details open><summary>Why won't ASuperTAB start?</summary><p>Check that ACore is installed and successfully enabled. ACore is a hard dependency.</p></details>
+<details><summary>Do I need PlaceholderAPI?</summary><p>No, but it is strongly recommended if you want placeholders from LuckPerms, Vault, statistics, or other plugins.</p></details>
+<details><summary>Why did my TAB names become plain?</summary><p>Use <code>tablist.name.use-group-format: false</code> if you want ASuperTAB to preserve one universal placeholder-driven format. Automatic sorting can remain enabled separately.</p></details>
+<details><summary>How do I make grouptab.yml actually control names?</summary><p>Set <code>tablist.name.use-group-format: true</code> in config.yml and make sure the group names match your LuckPerms groups.</p></details>
+<details><summary>How do I hide the red 1–9 numbers on the scoreboard?</summary><p>Keep <code>settings.hide-score-numbers: true</code> in scoreboard.yml.</p></details>
+<details><summary>Can players disable only their own scoreboard?</summary><p>Yes. <code>/asbtoggle</code> hides/shows only that player's sidebar for the current session.</p></details>
+<details><summary>Does /asbtoggle disable the TAB list too?</summary><p>No. TAB, sorting, tags, ping and animations remain active.</p></details>
+<details><summary>Can Java and Bedrock have different layouts?</summary><p>Yes. scoreboard.yml has separate Java and Bedrock sections, and userlines.yml also provides platform-specific sections.</p></details>
+<details><summary>Can I create custom tags?</summary><p>Yes. Add them under <code>ASuperTABtags</code> in astags.yml and configure the visible text, requirement(s), material, slot, name and lore.</p></details>
+<details><summary>Can I animate text?</summary><p>Yes. Define an animation in animation.yml, then use <code>%asupertab_animation_&lt;id&gt;%</code> where ASuperTAB parses placeholders.</p></details>
+<details><summary>Should I reload or restart?</summary><p>Use <code>/asupertab reload</code> for normal configuration changes. Fully restart when replacing JARs, adding dependencies, or troubleshooting startup issues.</p></details>
+</section>
+
+<section class="section" id="support"><h2>Support & Official Links</h2><p>When asking for support, include your Minecraft/Purpur/Paper version, ASuperTAB version, ACore version, relevant config file and the full console error if there is one.</p>
+<div class="grid-2"><div class="feature"><b>Official Marketplace</b><p>Browse, purchase, download and check all available Aevon plugins at <a href="https://aevonplugins.shop" target="_blank" rel="noopener">aevonplugins.shop</a>.</p></div><div class="feature"><b>Official Discord</b><p>Community and plugin support: <a href="https://discord.gg/Wcxw9VW85t" target="_blank" rel="noopener">discord.gg/Wcxw9VW85t</a>.</p></div></div>
+<p><strong>Author:</strong> Klioh_</p>
+</section>
+<footer>ASuperTAB v1.0.0 • Documentation theme: <span class="aqua">Aqua</span> + <span class="accent">Yellow</span> + White • Author: Klioh_</footer>
+</main></div>
+<script src="assets/js/app.js"></script>
+</body></html>

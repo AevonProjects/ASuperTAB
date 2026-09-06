@@ -1,0 +1,34 @@
+# Group appearance. Add as many LuckPerms groups as you want.
+groups:
+  default:
+    priority: 100
+    tab:
+      prefix: "&7"
+      name: "%player_name%"
+      suffix: " %asupertab_tags%"
+    nametag:
+      prefix: "&7"
+      name: "%player_name%"
+      suffix: ""
+
+  vip:
+    priority: 80
+    tab:
+      prefix: "&a[VIP] &f"
+      name: "%player_name%"
+      suffix: " %asupertab_tags%"
+    nametag:
+      prefix: "&a[VIP] &f"
+      name: "%player_name%"
+      suffix: ""
+
+  admin:
+    priority: 10
+    tab:
+      prefix: "&c&lADMIN &c"
+      name: "%player_name%"
+      suffix: " %asupertab_tags%"
+    nametag:
+      prefix: "&c&lADMIN &c"
+      name: "%player_name%"
+      suffix: ""

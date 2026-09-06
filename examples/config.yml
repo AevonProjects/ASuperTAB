@@ -1,0 +1,60 @@
+# ASuperTAB v1.0.0 - Main Configuration
+updates:
+  tab-refresh-ticks: 20
+
+placeholders:
+  # KEEP = leave unresolved placeholders visible, EMPTY = hide them, UNKNOWN = show ?
+  unresolved-mode: KEEP
+
+tablist:
+  enabled: true
+
+  # Controls exactly how player names appear when TAB is opened.
+  # false = use only the format below. This preserves your existing
+  # LuckPerms/PlaceholderAPI formatting instead of forcing grouptab.yml.
+  # true = use each group's tab.prefix/name/suffix from grouptab.yml.
+  name:
+    use-group-format: false
+    format: "%player_name%"
+
+  # Native right-side ping support from the working build.
+  ping:
+    enabled: true
+
+  # Automatic LuckPerms weight sorting added in the RGB/Animations build.
+  auto-sort:
+    enabled: true
+    higher-weight-first: true
+    same-weight-sort: ALPHABETICAL
+
+  # Java Edition supports header/footer. Bedrock clients are intentionally excluded.
+  java:
+    header:
+      - "&6&lASuperTAB"
+      - "&7Welcome, &f%player_name%"
+      - "&7Online: &a%server_online%"
+      - ""
+    footer:
+      - ""
+      - "&7Rank: &f%luckperms_primary_group%"
+      - "&7Ping: %asupertab_ping_colored%&7ms"
+
+# Ping display colors used by %asupertab_ping_colored% and %asupertab_ping_color%.
+ping:
+  enabled: true
+  ranges:
+    green-max: 99
+    yellow-max: 150
+    gold-max: 250
+  colors:
+    green: "&a"
+    yellow: "&e"
+    gold: "&6"
+    red: "&c"
+
+formatting:
+  rgb-enabled: true
+  gradients-enabled: true
+
+animations:
+  enabled: true

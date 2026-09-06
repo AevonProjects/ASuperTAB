@@ -1,0 +1,30 @@
+# Global scoreboard settings shared by Java and Bedrock players.
+settings:
+  # Removes the red score values shown on the far-right side of the sidebar.
+  # Applied to the objective before it is sent to either Java or Geyser/Bedrock clients.
+  hide-score-numbers: true
+
+scoreboard:
+  java:
+    enabled: true
+    title: "&6&lASuperTAB"
+    lines:
+      - "&7Welcome"
+      - "&f%player_name%"
+      - ""
+      - "&fRank: %luckperms_prefix%"
+      - "&fTag: %asupertab_tags%"
+      - "&fBalance: &a$%vault_eco_balance_formatted%"
+      - "&fPing: &a%asupertab_ping%ms"
+      - ""
+      - "&eYourServer.com"
+
+  bedrock:
+    enabled: true
+    title: "&6ASuperTAB"
+    lines:
+      - "&f%player_name%"
+      - "&fRank: %luckperms_primary_group%"
+      - "&fTag: %asupertab_tags%"
+      - "&fMoney: &a$%vault_eco_balance%"
+      - "&fOnline: &a%server_online%"

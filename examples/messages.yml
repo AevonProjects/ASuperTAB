@@ -1,0 +1,8 @@
+general:
+  no-permission: "&cYou do not have permission to use this command."
+  reloaded: "&aASuperTAB configurations have been reloaded."
+tags:
+  disabled: "&cASuperTAB Tags are currently disabled."
+  locked: "&cYou have not unlocked this tag yet."
+  equipped: "&aYou equipped the tag %tag%&a."
+  cleared: "&aYour active ASuperTAB tag has been cleared."
